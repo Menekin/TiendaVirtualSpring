@@ -5,8 +5,10 @@
 	padding: opx;
 }
 
-bodyxxx{
-	background: url(../img/fondo.jpg);
+body{
+	background-image: url(../img/fondo2.png);
+	background-size: cover;
+	text-align: center;
 }
 
 #cuadro{
@@ -60,7 +62,26 @@ bodyxxx{
 }
 
 
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
 
+tr:hover {background-color: #BDC3C7;}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+h1 {color: #3B3E40;}
 
 
 

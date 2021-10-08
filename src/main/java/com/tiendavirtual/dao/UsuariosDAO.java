@@ -5,33 +5,33 @@ import java.sql.Statement;
 
 import com.tiendavirtual.dto.Usuario;
 
-public class UsuariosDAO { 
-
-	public void insertUser(Usuario user) {
-		Conexion  connection = new Conexion();
+public class UsuariosDAO {
+	
+	public void insertUser (Usuario user) {
+		Conexion con= new Conexion ();
 		Statement stmt;
+		
 		try {
-			stmt = connection.getConnection().createStatement();
-			stmt.executeUpdate("INSERT INTO usuarios(usuario, password) "
-					+ "VALUES (" + "'" + user.getNombre() + "'" + "," + "'"
-					+ user.getPassword() + "'" + ")");
-			stmt.close();
+			stmt = con.getConection().createStatement();
+			stmt.executeUpdate("INSERT INTO usuarios(usuario, password) VALUES (" + "'" + user.getNombre() + "'" + ","
+	                + "'" + user.getPassword() + "'" + ")");	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
 	}
-
-	public Usuario searchUser(String parametro) {
+	
+    public Usuario searchUser (String nombre) {
 		
-		return null;
-	}
-
-	public void updateUser(Usuario user) {
+	return null;
+    }
+    
+   public void updateUser (Usuario user) {
 		
 	}
-
-	public void deleteUser() {
-
+   
+   public void deleteUser (Usuario user) {
+		
 	}
 }

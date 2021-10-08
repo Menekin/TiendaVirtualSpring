@@ -15,7 +15,7 @@ function enviarDatosCliente() {
 		// SEÑORAS Y SEÑORES PARA USTEDES EL FAMOSO OBJETO XMLHttpRequest 
 		var http = new XMLHttpRequest();
 
-		var url = "http://localhost:8080/ingresarCliente?";
+		var url = "/TiendaVirtualApp/ingresarCliente?";
 		var params = "cedula=" + cedula + "&" + "nombre=" + nombre + "&" + "telefono=" + telefono + "&" + "direccion=" + direccion + "&" + "email=" + email;
 		http.open('POST', url, true);
 		//Send the proper header information along with the request 

@@ -8,12 +8,12 @@
 		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.uelbosque.virtualstore</groupId>
+	<groupId>com.uelbosque.tiendavirtual</groupId>
 	<artifactId>TiendaVirtualSpring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>TiendaVirtualSpring</name>
-	<description>Tienda Virtual productos agrícolas.</description>
+	<description>Tienda Virtual para productos ecológicos</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
