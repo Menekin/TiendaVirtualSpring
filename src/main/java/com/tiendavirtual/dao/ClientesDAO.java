@@ -1,5 +1,6 @@
 package com.tiendavirtual.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,90 +10,53 @@ import com.tiendavirtual.dto.Cliente;
 
 public class ClientesDAO {
 
-	public void insertCliente(Cliente cliente) {
-		Conexion connection = new Conexion();
+	public void insertCostumer(Cliente cli) {
+		Conexion con = new Conexion();
 		Statement stmt;
+
 		try {
-			stmt = connection.getConnection().createStatement();
-			stmt.executeUpdate("INSERT INTO clientes(cedula, nombre, direccion, telefono, email) "
-					+ "VALUES (" + "'" + cliente.getCedula() + "'" + "," + "'" + cliente.getNombre() + "'" + "," + "'"
-					+ cliente.getDireccion() + "'" + "," + "'" + cliente.getTelefono() + "'" + "," + "'"
-					+ cliente.getEmail() + "'" + ")");
-			stmt.close();
+			stmt = con.getConection().createStatement();
+			stmt.executeUpdate("INSERT INTO clientes(cedula,nombre,telefono,direccion,correo) VALUES (" + "'"
+					+ cli.getCedula() + "'" + "," + "'" + cli.getNombre() + "'" + "," + "'" + cli.getTelefono() + "'"
+					+ "," + "'" + cli.getDireccion() + "'" + "," + "'" + cli.getCorreo() + "'" + ")");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
-	public Cliente searchCliente(String parametro) {
-		Conexion connection = new Conexion();
-		Cliente result = null;
-		Statement stmt;
-		try {
-			stmt = connection.getConnection().createStatement();
-			String sql = "SELECT * FROM clientes WHERE cedula = '" + parametro + "' OR " + "nombre = '" + parametro
-					+ "'";
-			ResultSet rs = stmt.executeQuery(sql);
-			if (rs.next()) {
-				String cedula = rs.getString("cedula");
-				String nombre = rs.getString("nombre");
-				String direccion = rs.getString("direccion");
-				String email = rs.getString("email");
-				String telefono = rs.getString("telefono");
-				result = new Cliente(cedula, nombre, direccion, telefono, email);
-			}
-			rs.close();
-			stmt.close();
-		} catch (Exception e) {
-			System.out.print("Error al buscar el cliente.");
-		}
-		return result;
+	public Cliente searchCustomer(String nombre) {
+
+		return null;
 	}
 
-	public ArrayList<Cliente> consultarClientes(String cedula) {
+	public void updateCustomer(Cliente cli) {
+
+	}
+
+	public void deleteCustomer(Cliente cli) {
+
+	}
+
+	public ArrayList<Cliente> consultarClientes() {
 		ArrayList<Cliente> lstClientes = new ArrayList<Cliente>();
-		Conexion connection = new Conexion();
-		
-		String sql = "SELECT * FROM clientes ";
-		if (!cedula.trim().equals("null")) {
-			sql = sql + "WHERE cedula = '" + cedula + "'";
-		}
-		
+		Conexion conex = new Conexion();
 		try {
-			Statement consulta = connection.getConnection().prepareStatement("SELECT * FROM clientes");
-			ResultSet res = consulta.executeQuery(sql);
+			PreparedStatement consulta = conex.getConection().prepareStatement("SELECT * FROM clientes ");
+
+			ResultSet res = consulta.executeQuery();
 			while (res.next()) {
-				Cliente registro = new Cliente(res.getString("cedula"), res.getString("nombre"),
-						res.getString("direccion"), res.getString("telefono"), res.getString("email"));
+					Cliente registro = new Cliente(res.getString("cedula"), res.getString("nombre"),
+						res.getString("telefono"), res.getString("direccion"), res.getString("correo"));
 				lstClientes.add(registro);
 			}
 			res.close();
 			consulta.close();
+			
 		} catch (Exception e) {
 			System.out.println("ERROR AL EJECUTAR CONSULTA");
 		}
 		return lstClientes;
 	}
-
-	public void updateCliente(String cedula, String nombre, String direccion, String telefono, String email) {
-		Conexion connection = new Conexion();
-		Statement stmt;
-		try {
-			stmt = connection.getConnection().createStatement();
-			String sql = "UPDATE clientes SET nombre = " + "'" + nombre + "', " + "direccion = " + "'" + direccion
-					+ "', " + "telefono = " + "'" + telefono + "' " + "email = " + "'" + email + "' "
-					+ "WHERE cedula = '" + cedula + "'";
-			stmt.executeUpdate(sql);
-			stmt.close();
-		} catch (Exception e) {
-			System.out.print("Error al actulizar Estudiante.");
-		}
-
-	}
-
-	public void deleteCliente() {
-
-	}
-
 }

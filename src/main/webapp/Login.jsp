@@ -1,34 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Iniciar sesión</title>
-
-<script>	
+<meta charset="ISO-8859-1">
+<title>Tienda virtual: Ingreso de usuarios</title>
+<script>
 	function enviarDatos() {
-		
 		if (validarDatos()) {
+
 			var user = document.getElementById("txtUser").value.trim();
 			var pass = document.getElementById("txtPass").value.trim();
-		
-
-			// SEÑORAS Y SEÑORES PARA USTEDES EL FAMOSO OBJETO XMLHttpRequest 
-			var http = new XMLHttpRequest();
-
-			var url = "http://localhost:8080/ingresarUser?";
-			var params = "nombre=" + user + "&" + "password=" + pass;
-			http.open('POST', url, true);
-			//Send the proper header information along with the request 
-			http.setRequestHeader('Content-type',
+			
+			//SE�ORAS Y SE�ORES PARA ESTUDES EL FAMOSISIMO OBJETO HMLHTTPREQUEST
+			var mensajero = new XMLHttpRequest();
+			
+			var url = '/TiendaVirtualApp/Login';
+			var params = "user=" + user + "&" + "pass=" + pass;
+			mensajero.open('POST', url, true);
+			
+			//Send the proper header information along with the request
+			mensajero.setRequestHeader('Content-type',
 					'application/x-www-form-urlencoded');
-			http.onreadystatechange = function() {//Call a function when the state changes. 
-				if (http.readyState == 4 && http.status == 200) {
-					alert(http.responseText);
+			mensajero.onreadystatechange = function() {//Call a function when the state changes.
+				if (mensajero.readyState == 4 && mensajero.status == 200) {
+					alert(mensajero.responseText);
 				}
 			}
-			http.send(params);
+			mensajero.send(params);
 		} else {
 			alert("Algo va mal")
 		}
@@ -50,62 +49,52 @@
 
 	}
 </script>
-
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-<!-- Bootstrap core CSS -->
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-.bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
-@media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
-}
-</style>
-
-
-<!-- Custom styles for this template -->
-<link href="css/signin.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
 
 
 </head>
+<body>
+<!--  -> Inicio encabezado de botones <- -->
+<br><br>
+   <a href="/TiendaVirtualApp/RegistroProveedores.jsp">
+   <img 
+   src="img/clientes.png" onmouseover="this.src='img/clientes_hover.png'"
+onmouseout="this.src='img/clientes.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/ConsultaProveedores.jsp">
+   <img 
+   src="img/proveedor.png" onmouseover="this.src='img/proveedor_hover.png'"
+onmouseout="this.src='img/proveedor.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/RegistroProveedores.jsp">
+   <img 
+   src="img/productos.png" onmouseover="this.src='img/productos_hover.png'"
+onmouseout="this.src='img/productos.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/Login.jsp">
+   <img 
+   src="img/login.png" onmouseover="this.src='img/login_hover.png'"
+onmouseout="this.src='img/login.png'"></a>
+<br><br>
+<!--  -> Fin encabezado de botones <- -->
 
-<body class="text-center">
-	<main class="form-signin">
-			<img class="mb-4" src="assets/brand/bootstrap-logo.svg" alt=""
-				width="72" height="57">
-			<h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
+<h1>Login de usuarios</h1>
+<br><br>
+	<form action="/TiendaVirtualApp/Login" method="get">
+		<table border='1'>
+			<tr>
+				<td>Usuario:</td>
+				<td><input type="text" id="txtUser" name="user"></input></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" id="txtPass" name="pass"></input></td>
+			</tr>
+		</table>
 
-			<div class="form-floating">
-				<input type="email" class="form-control" id="txtUser" name="user"
-					placeholder="name@example.com"> <label for="floatingInput">
-					Correo de usuario </label>
-			</div>
-			<div class="form-floating">
-				<input type="password" class="form-control" id="txtPass" name="pass"
-					placeholder="Password"> <label for="floatingPassword">Password</label>
-			</div>
-
-			<div class="checkbox mb-3">
-				<label> <input type="checkbox" value="remember-me">
-					Recordar
-				</label>
-			</div>
-			<button class="w-100 btn btn-lg btn-primary" onclick='enviarDatos()'>Login</button>
-			<p class="mt-5 mb-3 text-muted">&copy; Oscar Villarraga</p>
-
-		<br> <a href="IngresarCliente.jsp">Clientes</a>
-		
-		
-	</main>
+	</form>
+	<button onclick='enviarDatos()'>Login</button>
+	<br>
+	<a href="LoginCliente.jsp">Ir a pagina de registro</a>
 </body>
-
 </html>

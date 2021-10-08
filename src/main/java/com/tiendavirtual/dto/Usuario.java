@@ -8,6 +8,7 @@ public class Usuario {
 		super();
 		this.nombre = nombre;
 		this.password = password;
+		
 	}
 
 	public String getNombre() {
@@ -25,4 +26,7 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+
 }

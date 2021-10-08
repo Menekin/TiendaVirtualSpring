@@ -12,7 +12,7 @@
 			nit = "null";
 		}
 		var http = new XMLHttpRequest();
-		var url = 'http://localhost:8080/consultarProveedores';
+		var url = '/TiendaVirtualApp/consultarProveedores';
 		var params = "nit=" + nit;
 		http.open('POST', url, true);
 
@@ -22,7 +22,8 @@
 
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if (http.readyState == 4 && http.status == 200) {
-				alert(http.responseText);
+
+				//alert(http.responseText);
 				CreateTableFromJSON(http.responseText);
 
 			}
@@ -76,9 +77,33 @@
 		divContainer.appendChild(table);
 	}
 </script>
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1>Registro de Provedores</h1>
+<!--  -> Inicio encabezado de botones <- -->
+<br><br>
+   <a href="/TiendaVirtualApp/RegistroProveedores.jsp">
+   <img 
+   src="img/clientes.png" onmouseover="this.src='img/clientes_hover.png'"
+onmouseout="this.src='img/clientes.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/ConsultaProveedores.jsp">
+   <img 
+   src="img/proveedor.png" onmouseover="this.src='img/proveedor_hover.png'"
+onmouseout="this.src='img/proveedor.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/RegistroProveedores.jsp">
+   <img 
+   src="img/productos.png" onmouseover="this.src='img/productos_hover.png'"
+onmouseout="this.src='img/productos.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/Login.jsp">
+   <img 
+   src="img/login.png" onmouseover="this.src='img/login_hover.png'"
+onmouseout="this.src='img/login.png'"></a>
+<br><br>
+<!--  -> Fin encabezado de botones <- -->
+	<h1>Consulta de Proveedores</h1>
 	<table>
 		<tr>
 			<td><label for="txtNIT">NIT:</label></td>

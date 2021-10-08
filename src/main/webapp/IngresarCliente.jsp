@@ -10,7 +10,29 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
+<!--  -> Inicio encabezado de botones <- -->
+<br><br>
+   <a href="/TiendaVirtualApp/RegistroProveedores.jsp">
+   <img 
+   src="img/clientes.png" onmouseover="this.src='img/clientes_hover.png'"
+onmouseout="this.src='img/clientes.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/ConsultaProveedores.jsp">
+   <img 
+   src="img/proveedor.png" onmouseover="this.src='img/proveedor_hover.png'"
+onmouseout="this.src='img/proveedor.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/RegistroProveedores.jsp">
+   <img 
+   src="img/productos.png" onmouseover="this.src='img/productos_hover.png'"
+onmouseout="this.src='img/productos.png'"></a>
+&nbsp;
+<a href="/TiendaVirtualApp/Login.jsp">
+   <img 
+   src="img/login.png" onmouseover="this.src='img/login_hover.png'"
+onmouseout="this.src='img/login.png'"></a>
+<br><br>
+<!--  -> Fin encabezado de botones <- -->
 	<div id="cuadro">
 		<div class="container">
 			<p id="titulo">Clientes</p>
@@ -48,10 +70,7 @@
 	</div>
 
 
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="js/myscript.js"></script>
