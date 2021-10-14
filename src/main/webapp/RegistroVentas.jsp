@@ -4,20 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Registro de Proveedores</title>
+<title>Registro de venta</title>
 <script>
 	function validateFields() {
-		if (document.getElementById("txtNIT").value.trim().length == 0) {
-			alert("El NIT no puede ser vacio.");
+		if (document.getElementById("txtCodigo").value.trim().length == 0) {
+			alert("El Código no puede ser vacio.");
 			return false;
-		} else if (document.getElementById("txtNombre").value.trim().length == 0) {
-			alert("El nombre no puede ser vacio.");
+		} else if (document.getElementById("txtCantidad").value.trim().length == 0) {
+			alert("La cantidad de venta no puede ser vacía.");
 			return false;
-		} else if (document.getElementById("txtDireccion").value.trim().length == 0) {
-			alert("La dirección no puede ser vacia.");
-			return false;
-		} else if (document.getElementById("txtTelefono").value.trim().length == 0) {
-			alert("El telefono no puede ser vacio.");
+		} else if (document.getElementById("txtNIT_cliente").value.trim().length == 0) {
+			alert("El NIT del cliente no puede ser vacio.");
 			return false;
 		} else {
 			return true;
@@ -28,19 +25,17 @@
 		if (!validateFields()) {
 			return;
 		} else {
-			var nit = document.getElementById("txtNIT").value.trim();
-			var nombre = document.getElementById("txtNombre").value.trim();
-			var direccion = document.getElementById("txtDireccion").value
+			var Codigo_producto = document.getElementById("txtCodigo").value
 					.trim();
-			var telefono = document.getElementById("txtTelefono").value.trim();
-			var email = document.getElementById("txtEmail").value.trim();
-			var sitioweb = document.getElementById("txtSitioWeb").value.trim();
+			var Cantidad = document.getElementById("txtCantidad").value.trim();
+			var NIT_cliente = document.getElementById("txtNIT_cliente").value
+					.trim();
 
 			var http = new XMLHttpRequest();
-			var url = '/TiendaGrupo11RinconHondo/registrarProveedor';
-			var params = "NIT=" + nit + "&" + "nombre=" + nombre + "&"
-					+ "direccion=" + direccion + "&" + "telefono=" + telefono
-					+ "&" + "email=" + email + "&" + "sitioweb=" + sitioweb;
+			var url = '/TiendaGrupo11RinconHondo/registrarVenta';
+			var params = "codigo_producto=" + Codigo_producto + "&"
+					+ "cantidad=" + Cantidad + "&" + "NIT_cliente="
+					+ NIT_cliente;
 			http.open('POST', url, true);
 
 			//Send the proper header information along with the request
@@ -59,7 +54,6 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
 
 
 	<div id="menu">
@@ -94,7 +88,7 @@ document.getElementById('spoiler1') .style.display='none'
 document.getElementById('spoiler2') .style.display='none'
 document.getElementById('spoiler4') .style.display='none';}
 else{document.getElementById('spoiler3') .style.display='none';this.value = 'Mostrar'; }"
-			value="Mostrar" /> &nbsp; <input type="image" src="img/ventas.png"
+			value="Mostrar" />  &nbsp; <input type="image" src="img/ventas.png"
 			onmouseover="this.src='img/ventas_hover.png'"
 			onmouseout="this.src='img/ventas.png'"
 			onclick="if(document.getElementById('spoiler4') .style.display=='none') 
@@ -123,8 +117,9 @@ else{document.getElementById('spoiler4') .style.display='none';this.value = 'Mos
 				src="img/registro.png"
 				onmouseover="this.src='img/registro_hover.png'"
 				onmouseout="this.src='img/registro.png'">
-			</a> &nbsp; <a href="/TiendaGrupo11RinconHondo/CargueMasivoProducto.jsp">
-				<img src="img/cargue.png"
+			</a> &nbsp; <a
+				href="/TiendaGrupo11RinconHondo/CargueMasivoProducto.jsp"> <img
+				src="img/cargue.png"
 				onmouseover="this.src='img/cargue_hover.png'"
 				onmouseout="this.src='img/cargue.png'">
 			</a> &nbsp; <a href="/TiendaGrupo11RinconHondo/ConsultaProductos.jsp">
@@ -164,37 +159,24 @@ else{document.getElementById('spoiler4') .style.display='none';this.value = 'Mos
 	<!-- Aqui acaba el menú -->
 
 	<div id="contenido">
-
-
-		<h1>Registro de Provedores</h1>
+		<h1>Registro de Ventas</h1>
+		<br><br>
 		<table>
 			<tr>
-				<td><label for="txtNIT">NIT:</label></td>
-				<td><input type="text" id="txtNIT" name="NIT"></td>
+				<td><label for="txtCodigo">Código:</label></td>
+				<td><input type="text" id="txtCodigo" name="Codigo_producto"></td>
 			</tr>
 			<tr>
-				<td><label for="txtNombre">Nombre</label></td>
-				<td><input type="text" id="txtNombre" name="nombre"></td>
+				<td><label for="txtNombre">Cantidad:</label></td>
+				<td><input type="text" id="txtCantidad" name="Cantidad"></td>
 			</tr>
 			<tr>
-				<td><label for="txtDireccion">Dirección:</label></td>
-				<td><input type="text" id="txtDireccion" name="direccion"></td>
-			</tr>
-			<tr>
-				<td><label for="txtTelefono">Telefono</label></td>
-				<td><input type="text" id="txtTelefono" name="telefono"></td>
-			</tr>
-			<tr>
-				<td><label for="txtEmail">Correo Electrónico:</label></td>
-				<td><input type="email" id="txtEmail" name="email"></td>
-			</tr>
-			<tr>
-				<td><label for="txtSitioWeb">Sitio Web:</label></td>
-				<td><input type="text" id="txtSitioWeb" name="sitioweb"></td>
+				<td><label for="txtNitCliente">Nit Cliente:</label></td>
+				<td><input type="text" id="txtNIT_cliente" name="NIT_cliente"></td>
 			</tr>
 			<tr>
 				<td><button onclick="sendData()">Enviar Datos</button></td>
-				<td><button onclick="clearForm()">Cancelar</button></td>
+
 			</tr>
 		</table>
 	</div>
